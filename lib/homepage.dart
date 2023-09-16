@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'homepagewidget/Home_recharge_bill.dart';
 import 'homepagewidget/homeadd.dart';
 import 'homepagewidget/homecards.dart';
 import 'homepagewidget/homepageQR.dart';
+import 'homepagewidget/homepage_UPI.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -183,6 +185,241 @@ class _HomePageState extends State<HomePage> {
                     iconname: 'account_balance_wallet', name: "PhonePe Wallet"),
                 HomePageAdd(iconname: 'card_giftcard', name: "Rewards"),
                 HomePageAdd(iconname: 'share', name: "Refer & Get ₹100"),
+              ],
+            ),
+            const HomePageUPI(),
+            Container(
+              padding: const EdgeInsets.all(14),
+              margin: const EdgeInsets.all(6),
+              height: 210,
+              width: Get.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    16,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 5,
+                        spreadRadius: 3,
+                        color: Colors.grey.withOpacity(0.5),
+                        offset: const Offset(0, 3)),
+                  ],
+                  color: Colors.white),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Recharge & Pay Bills",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          height: 23,
+                          width: 70,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.grey.withOpacity(0.3)),
+                          child: const Center(
+                            child: Text(
+                              'My Bills',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      HomePageRecharge(
+                        iconname: 'smartphone',
+                        name: '  Mobile\nRecharge',
+                      ),
+                      HomePageRecharge(
+                        iconname: 'cast',
+                        name: 'DTH',
+                      ),
+                      HomePageRecharge(
+                        iconname: 'light_bulb',
+                        name: 'Electricity',
+                      ),
+                      HomePageRecharge(
+                        iconname: 'credit_card',
+                        name: 'Credit Card\nBill Payment',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const HomePageRecharge(
+                            iconname: 'house',
+                            name: '   Rent\nPayment',
+                          ),
+                          const HomePageRecharge(
+                            iconname: 'shopping_bag',
+                            name: '     Loan\nRepayment',
+                          ),
+                          const HomePageRecharge(
+                            iconname: 'local_gas_station',
+                            name: ' Book A\nCylinder',
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 42,
+                                width: 45,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.deepPurple,
+                                ),
+                                child: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              const Text("See All"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(8),
+        height: 65,
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                InkWell(
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.deepPurple,
+                    ),
+                    child: const Icon(
+                      Icons.home,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+                const Text("Home")
+              ],
+            ),
+            Column(
+              children: [
+                InkWell(
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.deepPurple,
+                    ),
+                    child: const Icon(
+                      Icons.store,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+                const Text("Stores")
+              ],
+            ),
+            Column(
+              children: [
+                InkWell(
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.deepPurple,
+                    ),
+                    child: const Icon(
+                      Icons.shield,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+                const Text("Inusrance")
+              ],
+            ),
+            Column(
+              children: [
+                InkWell(
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.deepPurple,
+                    ),
+                    child: const Icon(
+                      Icons.paid,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+                const Text("Wealth")
+              ],
+            ),
+            Column(
+              children: [
+                InkWell(
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.deepPurple,
+                    ),
+                    child: const Icon(
+                      Icons.double_arrow,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+                const Text(
+                  "History",
+                  style: TextStyle(fontSize: 15),
+                )
               ],
             ),
           ],
