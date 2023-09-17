@@ -9,10 +9,11 @@ class HomePageCard extends StatefulWidget {
 
 class _HomePageCardState extends State<HomePageCard> {
   List<String> image = [
-    "assets/images/2.jpg",
-    "assets/images/1.jpeg",
-    "assets/images/3.jpeg",
-    "assets/images/4.jpg",
+    "assets/images/c11.JPG",
+    "assets/images/c12.JPG",
+    "assets/images/c13.JPG",
+    "assets/images/c14.JPG",
+    "assets/images/c15.JPG"
   ];
 
   @override

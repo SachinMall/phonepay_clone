@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:phonepay_clone/Wealth.dart';
+import 'package:phonepay_clone/history.dart';
+import 'package:phonepay_clone/stores.dart';
 
 import 'homepagewidget/Home_recharge_bill.dart';
 import 'homepagewidget/homeadd.dart';
 import 'homepagewidget/homecards.dart';
 import 'homepagewidget/homepageQR.dart';
+import 'homepagewidget/homepage_Insurance.dart';
+import 'homepagewidget/homepage_Sponsored.dart';
 import 'homepagewidget/homepage_UPI.dart';
+
+import 'homepagewidget/homepage_card.dart';
+import 'homepagewidget/homepage_switch.dart';
+import 'homepagewidget/homepage_travel.dart';
+import 'rummy.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,109 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 10,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: Row(
-            children: [
-              Container(
-                height: 38,
-                width: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                ),
-                child: Center(
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.person_outline,
-                      color: Colors.deepPurple,
-                      size: 30,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        title: GestureDetector(
-          onTap: () {
-            print("object");
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Row(
-                children: [
-                  Text(
-                    "Add Address",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                  Icon(Icons.arrow_drop_down)
-                ],
-              ),
-              const SizedBox(height: 4),
-              Text(
-                "Murbad Subdistrict",
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[400],
-                ),
-              )
-            ],
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.qr_code_scanner,
-              size: 26,
-            ),
-          ),
-          Stack(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications,
-                  size: 26,
-                ),
-              ),
-              Positioned(
-                right: 12,
-                top: 8,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
-                    shape: BoxShape.circle,
-                  ),
-                  constraints:
-                      const BoxConstraints(minHeight: 13, minWidth: 13),
-                  child: const Center(
-                    child: Text(
-                      "2",
-                      style: TextStyle(fontSize: 8, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.help_outline,
-              size: 26,
-            ),
-          )
-        ],
-      ),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
@@ -215,19 +122,16 @@ class _HomePageState extends State<HomePage> {
                         "Recharge & Pay Bills",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 23,
-                          width: 70,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Colors.grey.withOpacity(0.3)),
-                          child: const Center(
-                            child: Text(
-                              'My Bills',
-                              style: TextStyle(fontSize: 12),
-                            ),
+                      Container(
+                        height: 23,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.grey.withOpacity(0.3)),
+                        child: const Center(
+                          child: Text(
+                            'My Bills',
+                            style: TextStyle(fontSize: 12),
                           ),
                         ),
                       ),
@@ -236,191 +140,349 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      HomePageRecharge(
-                        iconname: 'smartphone',
-                        name: '  Mobile\nRecharge',
-                      ),
-                      HomePageRecharge(
-                        iconname: 'cast',
-                        name: 'DTH',
-                      ),
-                      HomePageRecharge(
-                        iconname: 'light_bulb',
-                        name: 'Electricity',
-                      ),
-                      HomePageRecharge(
-                        iconname: 'credit_card',
-                        name: 'Credit Card\nBill Payment',
-                      ),
-                    ],
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        HomePageRecharge(
+                          iconname: 'smartphone',
+                          name: 'Mobile\nRecharge',
+                        ),
+                        HomePageRecharge(
+                          iconname: 'cast',
+                          name: 'DTH',
+                        ),
+                        HomePageRecharge(
+                          iconname: 'light_bulb',
+                          name: 'Electricity',
+                        ),
+                        HomePageRecharge(
+                          iconname: 'credit_card',
+                          name: 'Credit Card\nBill Payment',
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 25),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const HomePageRecharge(
+                          iconname: 'house',
+                          name: 'Rent\nPayment',
+                        ),
+                        const HomePageRecharge(
+                          iconname: 'rupee',
+                          name: 'Loan\nRepayment',
+                        ),
+                        const HomePageRecharge(
+                          iconname: 'local_gas_station',
+                          name: 'Book A\nCylinder',
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 42,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.deepPurple,
+                              ),
+                              child: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            const Text("See All"),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(14),
+              margin: const EdgeInsets.all(6),
+              height: 120,
+              width: Get.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    blurRadius: 5.0,
+                    spreadRadius: 2.0,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Sponsored Links",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        HomePageSponsored(
+                          nextPage: Rummy(),
+                          image: 'assets/images/ru.jpeg',
+                          name: 'Rummy',
+                        ),
+                        HomePageSponsored(
+                          nextPage: Rummy(),
+                          image: 'assets/images/bu.jpg',
+                          name: 'BuddyLoan',
+                        ),
+                        HomePageSponsored(
+                          nextPage: Rummy(),
+                          image: 'assets/images/mpl.jpg',
+                          name: 'MPL',
+                        ),
+                        HomePageSponsored(
+                          nextPage: HomePage(),
+                          image: 'assets/images/baj.jpg',
+                          name: 'Rummy',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.all(6),
+              height: 205,
+              width: Get.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    16,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 5,
+                        spreadRadius: 3,
+                        color: Colors.grey.withOpacity(0.5),
+                        offset: const Offset(0, 3)),
+                  ],
+                  color: Colors.white),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Insurance",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HomeInsurance(iconname: 'bike', name: 'Bike'),
+                        HomeInsurance(iconname: 'car', name: 'Car'),
+                        HomeInsurance(iconname: 'health', name: 'Health'),
+                        HomeInsurance(iconname: 'accident', name: 'Accident'),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const HomePageRecharge(
-                            iconname: 'house',
-                            name: '   Rent\nPayment',
-                          ),
-                          const HomePageRecharge(
-                            iconname: 'shopping_bag',
-                            name: '     Loan\nRepayment',
-                          ),
-                          const HomePageRecharge(
-                            iconname: 'local_gas_station',
-                            name: ' Book A\nCylinder',
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 42,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.deepPurple,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const HomeInsurance(
+                                iconname: 'term_life', name: 'Term Life'),
+                            const HomeInsurance(
+                                iconname: 'insurance', name: 'Travel'),
+                            const HomeInsurance(
+                                iconname: 'shield', name: 'Insurance\nRenewal'),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 42,
+                                  width: 42,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.deepPurple,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Colors.white,
+                                const SizedBox(
+                                  height: 8,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              const Text("See All"),
-                            ],
-                          ),
-                        ],
+                                const Text("See All"),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(8),
-        height: 65,
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                InkWell(
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.deepPurple,
-                    ),
-                    child: const Icon(
-                      Icons.home,
-                      color: Colors.white,
-                      size: 18,
-                    ),
+            const HomePageCardsSlider(),
+            Container(
+              padding: const EdgeInsets.all(14),
+              margin: const EdgeInsets.all(6),
+              height: 120,
+              width: Get.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 5.0,
+                      offset: const Offset(0, 3),
+                      spreadRadius: 2.0,
+                      color: Colors.grey.withOpacity(0.4))
+                ],
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Travel Bookings",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                ),
-                const Text("Home")
-              ],
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HomePageTravel(
+                          nextpage: Stores(),
+                          iconname: 'flights',
+                          name: 'Flights',
+                        ),
+                        HomePageTravel(
+                          nextpage: Wealth(),
+                          iconname: 'bus',
+                          name: 'Bus',
+                        ),
+                        HomePageTravel(
+                          nextpage: History(),
+                          iconname: 'trains',
+                          name: 'Trains',
+                        ),
+                        HomePageTravel(
+                          nextpage: HomePage(),
+                          iconname: 'hotels',
+                          name: 'Hotels',
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-            Column(
-              children: [
-                InkWell(
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.deepPurple,
-                    ),
-                    child: const Icon(
-                      Icons.store,
-                      color: Colors.white,
-                      size: 18,
+            Container(
+              padding: const EdgeInsets.all(14),
+              margin: const EdgeInsets.all(6),
+              height: 125,
+              width: Get.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 5.0,
+                      offset: const Offset(0, 3),
+                      spreadRadius: 2.0,
+                      color: Colors.grey.withOpacity(0.4))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Switch",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const HomePageSwitch(
+                          imagename: 'assets/images/d11.jpg',
+                          name: 'Dream 11',
+                        ),
+                        const HomePageSwitch(
+                          imagename: 'assets/images/download.jpg',
+                          name: 'Swiggy',
+                        ),
+                        const HomePageSwitch(
+                          imagename: 'assets/images/fast.jpg',
+                          name: 'Buy FASTTag',
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              height: 42,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.deepPurple),
+                              child: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            const Text("See All"),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                const Text("Stores")
-              ],
-            ),
-            Column(
-              children: [
-                InkWell(
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.deepPurple,
-                    ),
-                    child: const Icon(
-                      Icons.shield,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                  ),
-                ),
-                const Text("Inusrance")
-              ],
-            ),
-            Column(
-              children: [
-                InkWell(
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.deepPurple,
-                    ),
-                    child: const Icon(
-                      Icons.paid,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                  ),
-                ),
-                const Text("Wealth")
-              ],
-            ),
-            Column(
-              children: [
-                InkWell(
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.deepPurple,
-                    ),
-                    child: const Icon(
-                      Icons.double_arrow,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                  ),
-                ),
-                const Text(
-                  "History",
-                  style: TextStyle(fontSize: 15),
-                )
-              ],
+                ],
+              ),
             ),
           ],
         ),

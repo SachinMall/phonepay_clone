@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 
-class HomePageRecharge extends StatefulWidget {
+class HomeInsurance extends StatefulWidget {
   final String name;
   final String iconname;
 
-  const HomePageRecharge(
-      {super.key, required this.name, required this.iconname});
+  const HomeInsurance({super.key, required this.name, required this.iconname});
 
   @override
-  State<HomePageRecharge> createState() => _HomePageRechargeState();
+  State<HomeInsurance> createState() => _HomeInsuranceState();
 }
 
-class _HomePageRechargeState extends State<HomePageRecharge> {
+class _HomeInsuranceState extends State<HomeInsurance> {
   @override
   Widget build(BuildContext context) {
     IconData _getIconData(String iconname) {
       final IconData = {
-        'light_bulb': Icons.lightbulb_outline,
-        'credit_card': Icons.credit_card,
-        'house': Icons.house,
-        'rupee': Icons.currency_rupee_rounded,
-        'local_gas_station': Icons.local_gas_station,
-        'smartphone': Icons.smartphone,
-        'cast': Icons.cast
+        'bike': Icons.two_wheeler,
+        'car': Icons.directions_car,
+        'health': Icons.monitor_heart,
+        'accident': Icons.medical_services,
+        'term_life': Icons.local_fire_department,
+        'insurance': Icons.airplane_ticket,
+        'shield': Icons.shield
       };
       return IconData[iconname] ?? Icons.error;
     }
@@ -38,7 +37,7 @@ class _HomePageRechargeState extends State<HomePageRecharge> {
               widget.iconname,
             ),
             color: Colors.deepPurple,
-            size: 30,
+            size: 35,
           ),
         ),
         const SizedBox(
